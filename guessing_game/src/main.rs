@@ -1,25 +1,29 @@
-fn main(){
-    let x = 42;
+fn example() -> i32 {
+    let x =42;
+    //Rustの三項式
+    let v = if x < 42 { -1 } else {1};
+    println!("ifより:{}", v);
+    
+    let food = "ハンバーガー";
+    let result = match food {
+        "ホットドッグ" => "ホットドッグです",
+        //単一のの式で値を返す場合、中括弧は省略可能
+        _ => "ホットドッグではありません",
+    };
+    println!("食品の識別: {}",result);
+    
+    let v = {
+        //ブロックのスコープは関数のスコープから分離されている
+        let a = 1;
+        let b = 2;
+        a + b
+    };
+    println!("ブロックより: {}", v);
+    
+    //Rustで関数の最後から値を返す慣用的な方法
+    v + 4
+}
 
-    match x {
-        0 => {
-            println!("found zero");
-        }
-        //複数の値にマッチする
-        1 | 2 => {
-            println!("found 1 or 2");
-        }
-        //範囲マッチ
-        3..=9 => {
-            println!("found a number 3 to 9 inclusively");
-        }
-        //マッチした数字を変数に束縛
-        matched_num @ 10..=100 => {
-            println!("found {} number between 10 to 100!", matched_num);
-        }
-        //どのパターンにもマッチしない場合のデフォルトマッチが必須。else的なやつ。
-        _ => {
-            println!("found something else!");
-        }
-    }
-}    
+fn main() {
+    println!("関数より: {}", example());
+}
