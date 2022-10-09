@@ -1,7 +1,8 @@
-struct Location(i32, i32);
-
-fn main() {
-    // これもスタックに入れられる構造体です。
-    let loc = Location(42, 32);
-    println!("{}, {}", loc.0, loc.1);
+struct SeaCreature {
+    // String は構造体である。
+    animal_type: String,
+    name: String,
+    arms: i32,
+    legs: i32,
+    weapon: String,
 }
